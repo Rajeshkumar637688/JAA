@@ -114,13 +114,13 @@ def approve_or_disapprove_user(message):
     days = int(cmd_parts[3]) if len(cmd_parts) >= 4 else 0
 
     if action == '/approve':
-        if plan == 1:  # Instant Plan 🧡
+        if plan == 1:  # Instant Plan 
             if users_collection.count_documents({"plan": 1}) >= 99:
-                bot.send_message(chat_id, "*Approval failed: Instant Plan 🧡 limit reached (99 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*Approval failed: Instant Plan  limit reached (99 users).*", parse_mode='Markdown')
                 return
-        elif plan == 2:  # Instant++ Plan 💥
+        elif plan == 2:  # Instant++ Plan 
             if users_collection.count_documents({"plan": 2}) >= 300:
-                bot.send_message(chat_id, "*Approval failed: Instant++ Plan 💥 limit reached (300 users).*", parse_mode='Markdown')
+                bot.send_message(chat_id, "*Approval failed: Instant++ Plan  limit reached (300 users).*", parse_mode='Markdown')
                 return
 
         valid_until = (datetime.now() + timedelta(days=days)).date().isoformat() if days > 0 else datetime.now().date().isoformat()
@@ -152,11 +152,11 @@ def attack_command(message):
             return
 
         if user_data['plan'] == 1 and users_collection.count_documents({"plan": 1}) > 99:
-            bot.send_message(chat_id, "Your Instant Plan 🧡 is currently not available due to limit reached.")
+            bot.send_message(chat_id, "Your Instant Plan  is currently not available due to limit reached.")
             return
 
         if user_data['plan'] == 2 and users_collection.count_documents({"plan": 2}) > 300:
-            bot.send_message(chat_id, "Your Instant++ Plan 💥 is currently not available due to limit reached.")
+            bot.send_message(chat_id, "Your Instant++ Plan  is currently not available due to limit reached.")
             return
 
         bot.send_message(chat_id, "Enter the target IP, port, and duration (in seconds) separated by spaces.")
